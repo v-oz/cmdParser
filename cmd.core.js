@@ -14,44 +14,38 @@ return {
 // молекула системы - набор команд
 // но структура набора команд наследует структуру единичной команды, переопределяя её элементы
 function cSet(keyword){
-var set = c(keyword) // набор = команда
+var set = c(keyword) // набор = команда. ключевое слово для срабатывания действия набора
 // действие зачаточного набора переопределяется - 
 	set.action = function(s){
-		if(set.checkSet(s)){
-			set.find(s)
+		if(set.checkSet(s)){ // если в тексте есть ключевые слова команд этого набора
+			set.find(s)  // найти эту команду и выполнить её действие
 			}else{
-			set.defaultAction(s)
+			set.defaultAction(s) // или отработать по умолчанию.
 			}
 		}
-// add set's methods
+// Найти команду и выполнить её действие, если ключевое слово есть в тексте
 	set.find = function(s){
 		for(c in set.cs){
 			if(set.cs[c].check(s)){
 				set.cs[c].action(s)
-				break // comment it for batch commands
+				break // если в тексте может быть несколько команд из этого набора, закомментировать строку
+				// иначе выполнится первая попавшаяся
 				}
 			}
 		}
 	set.checkSet = function(s){ re = new RegExp(set.csKeywords, 'igm'); return re.test(s) }
 	set.defaultAction = function(s){flash(set.keyword+': What? '+s)}
-// add property
+// ключевые слова набора определяются на этапе построения целевой системы
 	set.csKeywords = 'dummy'
-// the Set
+// команды набора так же определяются на этапе построения целевой системы
 	set.cs = {}
 return set
 }
 
+// типовая система.
+// настраивается на этапе построения целевой системы
 function cSys(keyword){
 return cSet(keyword)
 }
 
-function Debug (head, msg){
-  popup(head, msg, true, '', 'PopUpHigh', 300);
-}
-
-function sayit(s,e){
-var engines = {en:'eng-USA', ru:'rus-RUS'}
-	e = e || 'ru'
-	say(s, 'default', engines[e], 'system', 5, 5)
-}
 // command parcer core
