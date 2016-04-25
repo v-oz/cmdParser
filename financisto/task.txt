@@ -1,0 +1,45 @@
+Profile: Financisto SBRF SMS (178)
+	Event: Received Text [ Type:SMS Sender:СБ РФ Content:MAES1478* ]
+Enter: fin Parser (177)
+	<включить профиль debug, 
+переменную инициализировать>
+	A1: [X] Anchor 
+	A2: JavaScriptlet [ Code:var debug; // set for debug
+financistoCommandSystem(global('SMS')) Libraries:file:///storage/sdcard0/Tasker/mystuff/js/financisto.cmd.js
+file:///storage/sdcard0/Tasker/mystuff/js/cmd.core.js Auto Exit:On Timeout (Seconds):50 ] 
+
+Profile: Financisto Debug (171)
+	Event: Variable Set [ Variable:%SMS Value:MAES1478* User Variables Only:On ]
+Enter: fin Parser (177)
+	<включить профиль debug, 
+переменную инициализировать>
+	A1: [X] Anchor 
+	A2: JavaScriptlet [ Code:var debug; // set for debug
+financistoCommandSystem(global('SMS')) Libraries:file:///storage/sdcard0/Tasker/mystuff/js/financisto.cmd.js
+file:///storage/sdcard0/Tasker/mystuff/js/cmd.core.js Auto Exit:On Timeout (Seconds):50 ] 
+
+fin Debug (170)
+	<включить профиль debug, включать по одному действию и запускать.>
+	A1: [X] Anchor 
+	<наличные>
+	A2: [X] Variable Set [ Name:%SMS To:MAES1478 10.10.15 10:45 выдача наличных 1500р ATM 4013239 Баланс: 42532.49р Do Maths:Off Append:Off ] 
+	<зарплата>
+	A3: [X] Variable Set [ Name:%SMS To:MAES1478 19.10.15 13:39 зачисление 2000р POPOLNENIE KARTY ZARPLATA Баланс: 42532.49р Do Maths:Off Append:Off ] 
+	<зачисление>
+	A4: [X] Variable Set [ Name:%SMS To:MAES1478 11.09.15 13:02 зачисление 675р SBOL s karty 4272****2936 Баланс: 42532.49р Do Maths:Off Append:Off ] 
+	<оплата>
+	A5: [X] Variable Set [ Name:%SMS To:MAES1478 06.10.15 00:57 оплата 500р some shit Баланс: 42532.49р Do Maths:Off Append:Off ] 
+	<оплата моб. банк>
+	A6: [X] Variable Set [ Name:%SMS To:MAES1478 03.10.15 оплата Мобильного банка за 03/10/2015-02/11/2015 30р Баланс: 42532.49р Do Maths:Off Append:Off ] 
+	<оплата телефон>
+	A7: [X] Variable Set [ Name:%SMS To:MAES1478 06.10.15 00:57 оплата услуг 500р Megafon_avto (9263121234) Баланс: 42532.49р Do Maths:Off Append:Off ] 
+	<покупка>
+	A8: [X] Variable Set [ Name:%SMS To:MAES1478 03.09.15 09:29 покупка 750р OOO PTO-AVTO Баланс: 42532.49р Do Maths:Off Append:Off ] 
+	<покупка жкх>
+	A9: [X] Variable Set [ Name:%SMS To:MAES1478 05.10.15 23:34 покупка 3284.54р PIK KOMFORT 1 Баланс: 42532.49р Do Maths:Off Append:Off ] 
+	<отмена покупки>
+	A10: [X] Variable Set [ Name:%SMS To:MAES1478 22.10.15 21:46 отмена покупки 2.97р Баланс: 42532.49р Do Maths:Off Append:Off ] 
+	<покупка отказ>
+	A11: [X] Variable Set [ Name:%SMS To:MAES1478 22.10.15 12:12 ОТКАЗ покупка 1USD PAYPAL Do Maths:Off Append:Off ] 
+	<покупка возврат>
+	A12: [X] Variable Set [ Name:%SMS To:MAES1478 11.09.15 09:21 возврат покупки 620р LERUA MERLEN Баланс: 42532.49р Do Maths:Off Append:Off ] 
