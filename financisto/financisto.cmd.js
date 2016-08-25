@@ -1,9 +1,9 @@
 
 // financisto SBRF SMS command set
 
-function financistoCommandSystem(c){
+function financistoCommandSystem(c,k){
 try{
-  sys = cSys('MAES1478') // ключевое слово в СМС, определяющее любую транзакцию по карте(счету), которую следует обработать
+  sys = cSys(k) // ключевое слово в СМС, определяющее любую транзакцию по карте(счету), которую следует обработать
   if(sys.check(c)){
     sys.cs = {setCash:Cash(), setIncome:Income(), setBuy:Buy(), setFee:Fee()} // набор категорий транзакций
     var kw = []; for (var set in sys.cs) {kw.push(sys.cs[set].keyword); }     // сборка ключевых слов из категорий
@@ -131,7 +131,7 @@ function getCommon(s,sign){
     if (cnt == 1) {ret.balance = r[1];}
     cnt++;
   }
-  if (r = s.match(/MAES(\d{4})/)) {ret.fromAccCard = r[1];} // счет в базе выбирается либо по ID, либо по title из таблицы account. Здесь - по ID
+  if (r = s.match(/(MAES|VISA)(\d{4})/)) {ret.fromAccCard = r[2];} // счет в базе выбирается либо по ID, либо по title из таблицы account. Здесь - по ID
   return ret;
 }
 
